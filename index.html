@@ -11,8 +11,30 @@
   
 <canvas id="canvas"></canvas>
 <canvas id="my-house" width="300" height="300"></canvas>
+<canvas width="300" height="300">
+  An alternative text describing what your canvas displays.
+</canvas>
+  
+<img src = "/image1.jpeg" >
+<video controls width="250">
+    <source src="/video1.mp4"
+            type="video/mp4">
+</video>
+<figure>
+    <figcaption>Listen to the T-Rex:</figcaption>
+    <audio
+        controls
+        src="/audio1.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+</figure>
+<label for="file">File progress:</label>
 
-
+<progress id="file" max="100" value="70"> 70% </progress>
+  
+  
+  
   
 <script>
   const canvas = document.getElementById('canvas');
@@ -277,7 +299,64 @@ ctx.putImageData(imageData, 20, 20);
 </script>
   
 <script>
+  const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, 100, 100);
+</script>
   
+<script>
+  var img = new Image();   // Create new img element
+img.src = 'data:image/gif;base64,R0lGODlhCwALAIAAAAAA3pn/ZiH5BAEAAAEALAAAAAALAAsAAAIUhA+hkcuO4lmNVindo7qyrIXiGBYAOw==';
+</script>
+  
+<script>
+  function getMyVideo() {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+    var ctx = canvas.getContext('2d');
+
+    return document.getElementById('myvideo');
+  }
+}
+</script>
+  
+<script>
+  function draw() {
+  var ctx = document.getElementById('canvas').getContext('2d');
+
+  ctx.fillRect(0, 0, 150, 150);   // Draw a rectangle with default settings
+  ctx.save();                  // Save the default state
+
+  ctx.fillStyle = '#09F';      // Make changes to the settings
+  ctx.fillRect(15, 15, 120, 120); // Draw a rectangle with new settings
+
+  ctx.save();                  // Save the current state
+  ctx.fillStyle = '#FFF';      // Make changes to the settings
+  ctx.globalAlpha = 0.5;
+  ctx.fillRect(30, 30, 90, 90);   // Draw a rectangle with new settings
+
+  ctx.restore();               // Restore previous state
+  ctx.fillRect(45, 45, 60, 60);   // Draw a rectangle with restored settings
+
+  ctx.restore();               // Restore original state
+  ctx.fillRect(60, 60, 30, 30);   // Draw a rectangle with restored settings
+}
+</script>
+  
+<script>
+  function draw() {
+  var ctx = document.getElementById('canvas').getContext('2d');
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      ctx.save();
+      ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255)';
+      ctx.translate(10 + j * 50, 10 + i * 50);
+      ctx.fillRect(0, 0, 25, 25);
+      ctx.restore();
+    }
+  }
+}
 </script>
   
 <script>
